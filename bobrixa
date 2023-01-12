@@ -1,0 +1,97 @@
+namespace path_of_dead
+            {
+                internal class Program
+                {
+                    static void Main(string[] args)
+                    {
+                        Console.CursorVisible = false;
+                        char[,] map =
+                        {
+                {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'},
+                {'#', 'x',' ','x',' ','x',' ','x',' ','x',' ','x',' ','#','#','#','#','#','#','#','x',' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', ' ', '#'},
+                {'#', ' ','#','#','#','#','#','x',' ','x',' ','x',' ','x',' ', 'x',' ','x',' ','x',' ','x', ' ', '#', 'x', ' ', 'x', ' ', 'x', ' ', 'x', '#', '#', 'x', '#'},
+                {'#', 'x','#','x',' ','x',' ','x',' ','x','x',' ','x','#','#', '#','x',' ','x',' ','x',' ', ' ', '#', ' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', '#', ' ', '#'},
+                {'#', ' ','#',' ','x',' ','#','#','#','#',' ','x',' ',' ',' ', '#',' ','x',' ','x',' ','#', '#', '#', '#', '#', '#', ' ', 'x', ' ', 'x', ' ', '#', 'x', '#'},
+                {'#', 'x','#','x',' ','x',' ','x',' ','#',' ',' ',' ','x',' ', '#','x',' ','x',' ','x',' ', ' ', ' ', '#', 'x', ' ', 'x', ' ', 'x', ' ', 'x', '#', ' ', '#'},
+                {'#', ' ','#',' ','x',' ','x',' ','x','#','x',' ','#','#','#','#','#','#','#',' ','x',' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', ' ', '#', 'x', '#'},
+                {'#', 'x','#','#','#','x',' ','x',' ','x',' ','x',' ','x',' ', 'x',' ','x',' ','x',' ','x', ' ', 'x', '#', ' ', 'x', ' ', 'x', '#', '#', '#', '#', ' ', '#'},
+                {'#', ' ','x',' ','x',' ','x',' ','x',' ','x',' ','x',' ','x', ' ','x',' ','x',' ','x',' ', 'x', ' ', '#', 'x', ' ', 'x', ' ', 'x', ' ', 'x', ' ', 'x', '#'},
+                {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'}
+            };
+                        int UserX = 6;
+                        int UserY = 6;
+                        int EnemyX1 = 1;
+                        int EnemyY1 = 33;
+                        int EnemyX2 = 1;
+                        int EnemyY2 = 1;
+                        int[] bag = new int[1];
+                        int score = 0;
+                        bool side = true;
+                        bool side2 = false;
+                        int hod = 0;
+                        Console.WriteLine("Выберете персонажа: ");
+
+                        char pers = Convert.ToChar(Console.ReadLine());
+                        if (pers == null)
+                            pers = '@';
+
+                        Console.WriteLine("Введите имя своего персонажа");
+                        string name = Console.ReadLine();
+                        if (name == null)
+                            name = "Очки";
+                    Console.WriteLine("Выберите уровень:");
+                        Console.CursorVisible = true;
+
+                        int top = Console.CursorTop;
+                        int y = top;
+
+                        Console.WriteLine("Первый");
+                        Console.WriteLine("Второй");
+                        Console.WriteLine("Третий");
+
+                        int down = Console.CursorTop;
+
+                        Console.CursorSize = 100;
+                        Console.CursorTop = top;
+
+                        ConsoleKey key;
+                        while ((key = Console.ReadKey(true).Key) != ConsoleKey.Enter)
+                        {
+                            if (key == ConsoleKey.UpArrow)
+                            {
+                                if (y > top)
+                                {
+                                    y--;
+                                    Console.CursorTop = y;
+                                }
+                            }
+                            else if (key == ConsoleKey.DownArrow)
+                            {
+                                if (y < down - 1)
+                                {
+                                    y++;
+                                    Console.CursorTop = y;
+                                }
+                            }
+                        }
+
+
+
+                        Console.CursorTop = down;
+
+
+
+
+
+                    Console.CursorVisible = false;
+                        if (y == top)
+                        {
+                            while (true)
+
+                            {
+                                Console.SetCursorPosition(0, 25);
+                                Console.WriteLine("------------------");
+                                Console.WriteLine("Очки: " + score);
+                                Console.Write("------------------");
+                                Console.SetCursorPosition(0, 10);
+                                Console.Write("--------------КАРТА----------------");
